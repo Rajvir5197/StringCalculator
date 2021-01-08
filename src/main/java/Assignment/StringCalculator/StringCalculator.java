@@ -5,7 +5,7 @@ package Assignment.StringCalculator;
  *
  */
 public class StringCalculator {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		System.out.println("Hello World!");
 
 	}
@@ -16,6 +16,7 @@ public class StringCalculator {
 		else {
 			int result = 0;
 			String[] numbers;
+			String negativeNumber = "";
 			if (string.startsWith("//")) {
 				String[] container = string.substring(2).split("\n");
 				String delemiter = container[0];
@@ -32,10 +33,13 @@ public class StringCalculator {
 			} else {
 				for (String num : numbers) {
 					if(Integer.parseInt(num) < 0){
-						throw new Exception("negatives not allowed " + num);
+						negativeNumber += num + " ";
 					}
 					result = result + Integer.parseInt(num);
 				}
+			}
+			if(!"".equals(negativeNumber)){
+				throw new Exception("negatives not allowed " + negativeNumber);
 			}
 
 			return result;

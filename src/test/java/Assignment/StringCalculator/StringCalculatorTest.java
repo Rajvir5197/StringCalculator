@@ -1,5 +1,7 @@
 package Assignment.StringCalculator;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import junit.framework.TestCase;
 
 /**
@@ -29,6 +31,13 @@ public class StringCalculatorTest
     	catch(Exception e){
     		assertEquals(true, e.toString().contains("negatives not allowed -2"));
     	}
+		
+		try{
+    		calculator.add("//;\n-11;-2");
+    	}
+    	catch(Exception e){
+    		assertEquals(true, e.toString().contains("negatives not allowed -11 -2"));
+    	}	
     		
 	}
 }
