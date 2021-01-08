@@ -21,17 +21,16 @@ public class StringCalculator {
 				String[] container = string.substring(2).split("\n");
 				String delemiter = container[0];
 				String numberString = container[1];
+				String separator = "\\" + delemiter;
 				if (delemiter.startsWith("[")) {
-					String Separator = "";
+					separator = "";
 					for(int i = 0; i < delemiter.length() -2 ; i++){
-						Separator = Separator + "\\" + delemiter.charAt(1);
+						separator = separator + "\\" + delemiter.charAt(1);
 					}
-					string = numberString.replace("\n", Separator);
-					numbers = numberString.split(Separator);
-				} else {
-					string = numberString.replace("\n", "\\" + delemiter);
-					numbers = numberString.split("\\" + delemiter);
 				}
+					string = numberString.replace("\n", separator);
+					numbers = numberString.split(separator);
+				
 			} else {
 				string = string.replace("\n", ",");
 				numbers = string.split(",");
