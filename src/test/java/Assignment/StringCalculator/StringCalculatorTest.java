@@ -1,11 +1,6 @@
 package Assignment.StringCalculator;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-
-import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 /**
  * Unit test for simple App.
@@ -15,7 +10,7 @@ public class StringCalculatorTest
 {
     StringCalculator calculator = new StringCalculator();
 	
-	public void testcase1(){
+	public void testcase1() throws Exception{
 		assertEquals(0, calculator.add(""));
 		assertEquals(1, calculator.add("1"));
 		assertEquals(5, calculator.add("2,3"));
@@ -27,5 +22,13 @@ public class StringCalculatorTest
 		assertEquals(3, calculator.add("//;\n1;2"));
 		assertEquals(3, calculator.add("//*\n1*2"));
 		assertEquals(24, calculator.add("//+\n1+23"));
+		
+		try{
+    		calculator.add("//;\n1;-2");
+    	}
+    	catch(Exception e){
+    		assertEquals(true, e.toString().contains("negatives not allowed -2"));
+    	}
+    		
 	}
 }
