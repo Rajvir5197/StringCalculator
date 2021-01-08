@@ -44,7 +44,11 @@ public class StringCalculatorTest
 		assertEquals(6, calculator.add("//[***]\n1***2***3"));
 		assertEquals(6, calculator.add("//[++]\n1++2++3"));
 		assertEquals(7, calculator.add("//[;;;;]\n2;;;;2;;;;3"));
-		//[***]\n1***2***3
+		
+		assertEquals(6, calculator.add("//[*][%]\n1*2%3"));
+		assertEquals(6, calculator.add("//[+][%]\n1+2%3"));
+		assertEquals(37, calculator.add("//[*][;]\n1*2;34"));
+		
     		
 	}
 }

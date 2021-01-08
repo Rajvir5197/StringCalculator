@@ -1,5 +1,10 @@
 package Assignment.StringCalculator;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Hello world!
  *
@@ -7,7 +12,8 @@ package Assignment.StringCalculator;
 public class StringCalculator {
 	public static void main(String[] args) throws Exception {
 		System.out.println("Hello World!");
-
+		StringCalculator cal = new StringCalculator();
+		System.out.println(cal.add("//[*][;]\n1*2;3\n4"));
 	}
 
 	public int add(String string) throws Exception {
@@ -24,9 +30,21 @@ public class StringCalculator {
 				String separator = "\\" + delemiter;
 				if (delemiter.startsWith("[")) {
 					separator = "";
-					for(int i = 0; i < delemiter.length() -2 ; i++){
-						separator = separator + "\\" + delemiter.charAt(1);
-					}
+					List<String> matchList = new ArrayList<String>();
+					Pattern regex = Pattern.compile("\\[(.*?)\\]");
+					Matcher regexMatcher = regex.matcher(delemiter);
+					
+					while (regexMatcher.find()) {
+						   matchList.add(regexMatcher.group(1));
+						}
+					for(String str:matchList) {
+						   for(int i =0; i < str.length(); i++){
+							   separator = separator+"\\"+str.charAt(0);
+						   }
+						   separator = separator + "|";
+						}
+						
+						separator = separator.substring(0,separator.length() -1 );
 				}
 					string = numberString.replace("\n", separator);
 					numbers = numberString.split(separator);
