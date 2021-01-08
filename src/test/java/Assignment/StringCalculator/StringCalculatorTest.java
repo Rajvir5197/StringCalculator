@@ -38,6 +38,9 @@ public class StringCalculatorTest
     	catch(Exception e){
     		assertEquals(true, e.toString().contains("negatives not allowed -11 -2"));
     	}	
+		assertEquals(1, calculator.add("//+\n1+2004"));
+		assertEquals(2, calculator.add("//+\n2025+2"));
+		assertEquals(1001, calculator.add("//+\n1+1000"));
     		
 	}
 }

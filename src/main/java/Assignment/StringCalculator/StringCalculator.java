@@ -35,7 +35,10 @@ public class StringCalculator {
 					if(Integer.parseInt(num) < 0){
 						negativeNumber += num + " ";
 					}
-					result = result + Integer.parseInt(num);
+					if(Integer.parseInt(num) <= 1000){
+						result = result + Integer.parseInt(num);
+					}
+					
 				}
 			}
 			if(!"".equals(negativeNumber)){
