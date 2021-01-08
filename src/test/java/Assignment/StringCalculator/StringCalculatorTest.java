@@ -22,6 +22,7 @@ public class StringCalculatorTest
 		assertEquals(6, calculator.add("1,2,3"));
 		assertEquals(27, calculator.add("2,3,4,5,6,7"));
 		assertEquals(18, calculator.add("2,3,6,7"));
-		
+		assertEquals(6, calculator.add("1\n2,3"));
+		assertEquals(10, calculator.add("1\n2,3\n4"));
 	}
 }

@@ -16,6 +16,7 @@ public class StringCalculator
 			return 0;
 		else{
 			int result = 0;
+			string = string.replace("\n", ",");
 			String[] numbers = string.split(",");
 			if(numbers.length == 1){
 				result =  Integer.parseInt(numbers[0]);
