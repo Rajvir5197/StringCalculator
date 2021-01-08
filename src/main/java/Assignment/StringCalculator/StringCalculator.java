@@ -21,27 +21,36 @@ public class StringCalculator {
 				String[] container = string.substring(2).split("\n");
 				String delemiter = container[0];
 				String numberString = container[1];
-				string = numberString.replace("\n", "\\" + delemiter);
-				numbers = numberString.split("\\" + delemiter);
+				if (delemiter.startsWith("[")) {
+					String Separator = "";
+					for(int i = 0; i < delemiter.length() -2 ; i++){
+						Separator = Separator + "\\" + delemiter.charAt(1);
+					}
+					string = numberString.replace("\n", Separator);
+					numbers = numberString.split(Separator);
+				} else {
+					string = numberString.replace("\n", "\\" + delemiter);
+					numbers = numberString.split("\\" + delemiter);
+				}
 			} else {
 				string = string.replace("\n", ",");
 				numbers = string.split(",");
 			}
-			
+
 			if (numbers.length == 1) {
 				result = Integer.parseInt(numbers[0]);
 			} else {
 				for (String num : numbers) {
-					if(Integer.parseInt(num) < 0){
+					if (Integer.parseInt(num) < 0) {
 						negativeNumber += num + " ";
 					}
-					if(Integer.parseInt(num) <= 1000){
+					if (Integer.parseInt(num) <= 1000) {
 						result = result + Integer.parseInt(num);
 					}
-					
+
 				}
 			}
-			if(!"".equals(negativeNumber)){
+			if (!"".equals(negativeNumber)) {
 				throw new Exception("negatives not allowed " + negativeNumber);
 			}
 

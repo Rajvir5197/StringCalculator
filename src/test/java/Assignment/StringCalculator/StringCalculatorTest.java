@@ -40,7 +40,11 @@ public class StringCalculatorTest
     	}	
 		assertEquals(1, calculator.add("//+\n1+2004"));
 		assertEquals(2, calculator.add("//+\n2025+2"));
-		assertEquals(1001, calculator.add("//+\n1+1000"));
+
+		assertEquals(6, calculator.add("//[***]\n1***2***3"));
+		assertEquals(6, calculator.add("//[++]\n1++2++3"));
+		assertEquals(7, calculator.add("//[;;;;]\n2;;;;2;;;;3"));
+		//[***]\n1***2***3
     		
 	}
 }
