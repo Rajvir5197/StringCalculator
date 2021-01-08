@@ -49,6 +49,8 @@ public class StringCalculatorTest
 		assertEquals(6, calculator.add("//[+][%]\n1+2%3"));
 		assertEquals(37, calculator.add("//[*][;]\n1*2;34"));
 		
+		assertEquals(21, calculator.getCalledCount());
+		
     		
 	}
 }
