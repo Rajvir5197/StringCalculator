@@ -15,12 +15,16 @@ public class StringCalculator
 		if("".equals(string))
 			return 0;
 		else{
+			int result = 0;
 			String[] numbers = string.split(",");
 			if(numbers.length == 1){
-				return Integer.parseInt(numbers[0]);
+				result =  Integer.parseInt(numbers[0]);
 			}else{
-				return Integer.parseInt(numbers[0]) + Integer.parseInt(numbers[1]);
+				for(String num : numbers){
+					result = result + Integer.parseInt(num);
+				}		
 			}
+			return result;
 		}
 	}
 }
